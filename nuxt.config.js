@@ -91,5 +91,5 @@ export default {
     webpack: {
       poll: true
     }
-  }  
+  }
 }
