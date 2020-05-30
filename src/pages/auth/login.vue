@@ -49,14 +49,24 @@
               </v-col>
             </v-row>
             <v-row>
-              <v-col>
+              <v-col cols="12" sm="6">
                 <v-btn block color="primary" @click="signInWithGoogle">
                   Googleでログイン
                 </v-btn>
               </v-col>
-              <v-col>
+              <v-col cols="12" sm="6">
+                <v-btn block color="primary" @click="signInWithFacebook">
+                  Facebookでログイン
+                </v-btn>
+              </v-col>
+              <v-col cols="12" sm="6">
                 <v-btn block color="primary" @click="signInWithTwitter">
                   Twitterでログイン
+                </v-btn>
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-btn block color="primary" @click="signInWithGitHub">
+                  GitHubでログイン
                 </v-btn>
               </v-col>
             </v-row>
@@ -143,11 +153,25 @@ export default defineComponent({
       password: ''
     })
 
+    const signInWithPhone = () => {
+      state.loading = true
+      $firebase
+        .auth()
+        .signInWithRedirect(new $firebase.auth.PhoneAuthProvider())
+    }
+
     const signInWithGoogle = () => {
       state.loading = true
       $firebase
         .auth()
         .signInWithRedirect(new $firebase.auth.GoogleAuthProvider())
+    }
+
+    const signInWithFacebook = () => {
+      state.loading = true
+      $firebase
+        .auth()
+        .signInWithRedirect(new $firebase.auth.FacebookAuthProvider())
     }
 
     const signInWithTwitter = () => {
@@ -157,12 +181,22 @@ export default defineComponent({
         .signInWithRedirect(new $firebase.auth.TwitterAuthProvider())
     }
 
+    const signInWithGitHub = () => {
+      state.loading = true
+      $firebase
+        .auth()
+        .signInWithRedirect(new $firebase.auth.GithubAuthProvider())
+    }
+
     return {
       state,
       signInWithEmailAndPassword,
       signInWithEmailAndPasswordField,
+      signInWithPhone,
       signInWithGoogle,
-      signInWithTwitter
+      signInWithFacebook,
+      signInWithTwitter,
+      signInWithGitHub
     }
   }
 })
