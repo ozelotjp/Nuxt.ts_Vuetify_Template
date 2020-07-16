@@ -39,7 +39,6 @@
     ],
     "vetur.format.defaultFormatter.html": "prettier"
   },
-  "postCreateCommand": "apk add git bash && npm i -g firebase-tools",
   // Docker-Compose
   "dockerComposeFile": "../docker-compose.yml",
   "service": "app",
