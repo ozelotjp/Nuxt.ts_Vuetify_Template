@@ -40,7 +40,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/composition-api', '@/plugins/firebase'],
+  plugins: ['@/plugins/firebase'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -51,6 +51,7 @@ export default {
    */
   buildModules: [
     '@nuxt/typescript-build',
+    'nuxt-composition-api',
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/vuetify',
