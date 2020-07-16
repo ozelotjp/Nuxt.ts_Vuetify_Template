@@ -25,9 +25,12 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
-      }
-    ]
+        content: process.env.npm_package_description || '',
+      },
+    ],
+    link: [
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
   },
   /*
    ** Global CSS
@@ -61,9 +64,9 @@ export default {
       '@nuxtjs/dotenv',
       {
         path: './config/',
-        filename: process.env.NODE_ENV !== 'production' ? '.env' : '.env'
-      }
-    ]
+        filename: process.env.NODE_ENV !== 'production' ? '.env' : '.env',
+      },
+    ],
   ],
   /*
    ** vuetify module configuration
@@ -81,10 +84,10 @@ export default {
     //       info: colors.teal.lighten1,
     //       warning: colors.amber.base,
     //       error: colors.deepOrange.accent4,
-    //       success: colors.green.accent3
-    //     }
-    //   }
-    // }
+    //       success: colors.green.accent3,
+    //     },
+    //   },
+    // },
   },
   /*
    ** Build configuration
@@ -93,12 +96,12 @@ export default {
   build: {},
   typescript: {
     typeCheck: {
-      eslint: true
-    }
+      eslint: true,
+    },
   },
   watchers: {
     webpack: {
-      poll: true
-    }
-  }
+      poll: true,
+    },
+  },
 }
