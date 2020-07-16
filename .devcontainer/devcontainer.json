@@ -11,6 +11,8 @@
     "formulahendry.auto-close-tag",
     // Vue
     "octref.vetur",
+    // Vuetify
+    "vuetifyjs.vuetify-vscode",
     // Firebase
     "toba.vsfire",
     // ESLint
