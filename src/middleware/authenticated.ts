@@ -4,7 +4,7 @@ import { authenticatedStore } from '@/store'
 const myMiddleware: Middleware = async ({
   redirect,
   app: { $firebase },
-  route
+  route,
 }) => {
   await new Promise<firebase.User>((resolve, reject) => {
     $firebase
