@@ -111,7 +111,9 @@ export default {
   },
   typescript: {
     typeCheck: {
-      eslint: true,
+      eslint: {
+        files: './src/**/*.{ts,js,vue}',
+      },
     },
   },
   watchers: {
