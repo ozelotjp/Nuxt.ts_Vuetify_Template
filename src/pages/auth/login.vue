@@ -96,7 +96,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from '@vue/composition-api'
+import { defineComponent, reactive } from 'nuxt-composition-api'
 import { authenticatedStore } from '@/store'
 
 export default defineComponent({

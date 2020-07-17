@@ -13,8 +13,8 @@ const myMiddleware: Middleware = async ({
         user === null ? reject(new Error()) : resolve(user)
       )
   })
-    .then((user) => {
-      console.log(`Authenticated as ${user.uid}`)
+    .then(() => {
+      //
     })
     .catch(() => {
       authenticatedStore.setNextUrl(route.path)

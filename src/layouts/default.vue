@@ -55,7 +55,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, defineComponent } from '@vue/composition-api'
+import { reactive, defineComponent } from 'nuxt-composition-api'
 
 interface IDrawerList {
   subheader?: string
