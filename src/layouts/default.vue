@@ -5,17 +5,6 @@
       <v-toolbar-title>
         NuxtTS-Template
       </v-toolbar-title>
-      <v-spacer />
-      <v-btn v-if="state.isAuthenticated" icon to="/auth/logout">
-        <v-icon>
-          mdi-logout-variant
-        </v-icon>
-      </v-btn>
-      <v-btn v-else icon to="/auth/login">
-        <v-icon>
-          mdi-login-variant
-        </v-icon>
-      </v-btn>
     </v-app-bar>
     <v-navigation-drawer v-model="state.drawer" app clipped>
       <div v-for="(list, listIndex) in drawerList" :key="`list-${listIndex}`">
