@@ -105,8 +105,8 @@ export default defineComponent({
       loading: true,
       errorNotify: {
         show: false,
-        text: ''
-      }
+        text: '',
+      },
     })
 
     $firebase.auth().onAuthStateChanged((user) => {
@@ -141,7 +141,7 @@ export default defineComponent({
                   console.warn(`未定義のエラーです： \`${error.code}\``)
                   return error.message
               }
-            })()
+            })(),
           }
         })
         .finally(() => {
@@ -150,7 +150,7 @@ export default defineComponent({
     }
     const signInWithEmailAndPasswordField = reactive({
       email: '',
-      password: ''
+      password: '',
     })
 
     const signInWithPhone = () => {
@@ -196,8 +196,8 @@ export default defineComponent({
       signInWithGoogle,
       signInWithFacebook,
       signInWithTwitter,
-      signInWithGitHub
+      signInWithGitHub,
     }
-  }
+  },
 })
 </script>

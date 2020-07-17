@@ -9,6 +9,6 @@ export default defineComponent({
       .then(() => {
         $router.push('/')
       })
-  }
+  },
 })
 </script>

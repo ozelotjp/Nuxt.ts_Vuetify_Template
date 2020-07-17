@@ -17,13 +17,13 @@ export default defineComponent({
   props: {
     error: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   setup({ error }) {
     return {
-      error
+      error,
     }
-  }
+  },
 })
 </script>

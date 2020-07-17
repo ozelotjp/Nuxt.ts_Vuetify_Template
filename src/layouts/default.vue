@@ -71,19 +71,19 @@ export default defineComponent({
   setup(_, { root: { $firebase } }) {
     const state = reactive({
       drawer: null,
-      isAuthenticated: $firebase.auth().currentUser !== null
+      isAuthenticated: $firebase.auth().currentUser !== null,
     })
 
     const drawerList = [
       {
-        items: [{ text: 'ホーム', to: '/', icon: 'mdi-home' }]
-      }
+        items: [{ text: 'ホーム', to: '/', icon: 'mdi-home' }],
+      },
     ] as IDrawerList[]
 
     return {
       state,
-      drawerList
+      drawerList,
     }
-  }
+  },
 })
 </script>
