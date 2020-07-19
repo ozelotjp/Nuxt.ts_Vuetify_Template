@@ -36,7 +36,8 @@
       "typescript",
       "vue",
     ],
-    "vetur.format.defaultFormatter.html": "prettier"
+    "vetur.format.defaultFormatter.html": "prettier",
+    "vetur.experimental.templateInterpolationService": true
   },
   // Docker-Compose
   "dockerComposeFile": "../docker-compose.yml",
