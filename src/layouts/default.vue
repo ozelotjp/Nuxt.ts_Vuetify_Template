@@ -1,7 +1,8 @@
 <template>
   <v-app>
     <LayoutHeader @toggleDrawer="toggleDrawer" />
-    <LayoutAside ref="layoutAsideRef" />
+    <LayoutLeftSide ref="LayoutLeftSide" />
+    <LayoutRightSide ref="LayoutRightSide" />
     <v-main>
       <nuxt />
     </v-main>
@@ -13,13 +14,24 @@ import { defineComponent, ref } from 'nuxt-composition-api'
 
 export default defineComponent({
   setup() {
-    const layoutAsideRef = ref()
-    const toggleDrawer = () => {
-      layoutAsideRef.value.toggleDrawer()
+    const LayoutLeftSide = ref()
+    const LayoutRightSide = ref()
+    const toggleDrawer = (side: 'left' | 'right') => {
+      console.log({
+        left: LayoutLeftSide.value,
+        right: LayoutRightSide.value,
+      })
+      if (side === 'left') {
+        LayoutLeftSide.value.toggleDrawer()
+      }
+      if (side === 'right') {
+        LayoutRightSide.value.toggleDrawer()
+      }
     }
 
     return {
-      layoutAsideRef,
+      LayoutLeftSide,
+      LayoutRightSide,
       toggleDrawer,
     }
   },

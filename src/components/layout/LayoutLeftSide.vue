@@ -9,13 +9,11 @@
         <v-subheader v-if="typeof list.subheader !== 'undefined'">
           {{ list.subheader }}
         </v-subheader>
-        <v-list-item-group>
+        <v-list-item-group color="primary">
           <v-list-item
             v-for="(item, itemIndex) in list.items"
             :key="`list-${itemIndex}`"
-            link
             :to="item.to"
-            active-class="primary--text"
           >
             <v-list-item-icon v-if="typeof item.icon !== 'undefined'">
               <v-icon>
@@ -55,7 +53,10 @@ export default defineComponent({
 
     const drawerList = [
       {
-        items: [{ text: 'ホーム', to: '/', icon: 'mdi-home' }],
+        items: [
+          { text: 'ホーム', to: '/', icon: 'mdi-home' },
+          { text: 'ホーム', to: '/hogehoge', icon: 'mdi-home' },
+        ],
       },
     ] as IDrawerList[]
 
