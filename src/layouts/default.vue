@@ -17,10 +17,6 @@ export default defineComponent({
     const LayoutLeftSide = ref()
     const LayoutRightSide = ref()
     const toggleDrawer = (side: 'left' | 'right') => {
-      console.log({
-        left: LayoutLeftSide.value,
-        right: LayoutRightSide.value,
-      })
       if (side === 'left') {
         LayoutLeftSide.value.toggleDrawer()
       }
