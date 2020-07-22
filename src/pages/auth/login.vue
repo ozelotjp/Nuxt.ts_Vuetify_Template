@@ -1,7 +1,7 @@
 <template>
   <v-container class="fill-height">
     <v-row align="center" justify="center">
-      <v-col cols="10" sm="7" md="5" lg="4" xl="3">
+      <v-col cols="11" sm="7" md="5" lg="5" xl="3">
         <v-card>
           <v-toolbar dense dark color="primary">
             <v-spacer />
