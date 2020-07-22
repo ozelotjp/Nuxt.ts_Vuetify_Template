@@ -1,72 +1,54 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <h1>ログイン</h1>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12" md="6">
+  <v-container class="fill-height">
+    <v-row align="center" justify="center">
+      <v-col cols="10" sm="7" md="5" lg="4" xl="3">
         <v-card>
+          <v-toolbar dense dark color="primary">
+            <v-spacer />
+            <v-toolbar-title>
+              ログイン
+            </v-toolbar-title>
+            <v-spacer />
+          </v-toolbar>
           <v-card-text>
             <v-row>
-              <v-col>
-                <h2>メールアドレス・パスワード</h2>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col>
-                <v-text-field
-                  v-model="signInWithEmailAndPasswordField.email"
-                  label="メールアドレス"
-                  type="email"
-                  outlined
-                />
-                <v-text-field
-                  v-model="signInWithEmailAndPasswordField.password"
-                  label="パスワード"
-                  type="password"
-                  outlined
-                />
-                <v-btn
-                  block
-                  color="primary"
-                  @click="signInWithEmailAndPassword"
-                >
-                  ログイン
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <v-col>
-        <v-card>
-          <v-card-text>
-            <v-row>
-              <v-col>
-                <h2>SNSアカウントでログイン</h2>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="6">
-                <v-btn block color="primary" @click="signInWithGoogle">
+              <v-col cols="12">
+                <v-btn block class="text-capitalize" @click="signInWithGoogle">
+                  <v-icon left>
+                    mdi-google
+                  </v-icon>
                   Googleでログイン
                 </v-btn>
               </v-col>
-              <v-col cols="12" sm="6">
-                <v-btn block color="primary" @click="signInWithFacebook">
-                  Facebookでログイン
-                </v-btn>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-btn block color="primary" @click="signInWithTwitter">
+              <v-col cols="12">
+                <v-btn block class="text-capitalize" @click="signInWithTwitter">
+                  <v-icon left>
+                    mdi-twitter
+                  </v-icon>
                   Twitterでログイン
                 </v-btn>
               </v-col>
-              <v-col cols="12" sm="6">
-                <v-btn block color="primary" @click="signInWithGitHub">
+              <v-col cols="12">
+                <v-btn block class="text-capitalize" @click="signInWithGitHub">
+                  <v-icon left>
+                    mdi-github
+                  </v-icon>
                   GitHubでログイン
+                </v-btn>
+              </v-col>
+              <v-col cols="12">
+                <v-divider />
+              </v-col>
+              <v-col cols="12">
+                <v-btn
+                  block
+                  class="text-capitalize"
+                  @click="signInWithAnonymously"
+                >
+                  <v-icon left>
+                    mdi-incognito
+                  </v-icon>
+                  お試し利用（ゲスト）
                 </v-btn>
               </v-col>
             </v-row>
@@ -74,11 +56,13 @@
         </v-card>
       </v-col>
     </v-row>
+
     <v-overlay v-model="state.loading">
       <v-progress-circular indeterminate size="64" />
     </v-overlay>
+
     <v-snackbar
-      v-model="state.errorNotify.flag"
+      v-model="state.errorNotify.show"
       left
       bottom
       :timeout="6000"
@@ -86,7 +70,7 @@
       multi-line
     >
       {{ state.errorNotify.text }}
-      <v-btn icon @click="state.errorNotify.flag = false">
+      <v-btn icon @click="state.errorNotify.show = false">
         <v-icon>
           mdi-close
         </v-icon>
@@ -94,6 +78,28 @@
     </v-snackbar>
   </v-container>
 </template>
+
+<style scoped>
+.bg-google {
+  background-color: #4285f4 !important;
+  border-color: #4285f4 !important;
+}
+
+.bg-apple {
+  background-color: #000 !important;
+  border-color: #000 !important;
+}
+
+.bg-twitter {
+  background-color: #1da1f2 !important;
+  border-color: #1da1f2 !important;
+}
+
+.bg-github {
+  background-color: #181717 !important;
+  border-color: #181717 !important;
+}
+</style>
 
 <script lang="ts">
 import { defineComponent, reactive } from 'nuxt-composition-api'
@@ -117,61 +123,11 @@ export default defineComponent({
       state.loading = false
     })
 
-    const signInWithEmailAndPassword = () => {
-      state.loading = true
-      $firebase
-        .auth()
-        .signInWithEmailAndPassword(
-          signInWithEmailAndPasswordField.email,
-          signInWithEmailAndPasswordField.password
-        )
-        .then(() => {
-          // onAuthStateChangedで処理を行う
-        })
-        .catch((error) => {
-          state.errorNotify = {
-            show: true,
-            text: (() => {
-              switch (error.code) {
-                case 'auth/wrong-password':
-                  return 'パスワードが違います'
-                case 'auth/too-many-requests':
-                  return 'ログイン試行回数が多すぎます（少し経ってたからまたお試しください）'
-                default:
-                  console.warn(`未定義のエラーです： \`${error.code}\``)
-                  return error.message
-              }
-            })(),
-          }
-        })
-        .finally(() => {
-          state.loading = false
-        })
-    }
-    const signInWithEmailAndPasswordField = reactive({
-      email: '',
-      password: '',
-    })
-
-    const signInWithPhone = () => {
-      state.loading = true
-      $firebase
-        .auth()
-        .signInWithRedirect(new $firebase.auth.PhoneAuthProvider())
-    }
-
     const signInWithGoogle = () => {
       state.loading = true
       $firebase
         .auth()
         .signInWithRedirect(new $firebase.auth.GoogleAuthProvider())
-    }
-
-    const signInWithFacebook = () => {
-      state.loading = true
-      $firebase
-        .auth()
-        .signInWithRedirect(new $firebase.auth.FacebookAuthProvider())
     }
 
     const signInWithTwitter = () => {
@@ -188,15 +144,17 @@ export default defineComponent({
         .signInWithRedirect(new $firebase.auth.GithubAuthProvider())
     }
 
+    const signInWithAnonymously = () => {
+      state.loading = true
+      $firebase.auth().signInAnonymously()
+    }
+
     return {
       state,
-      signInWithEmailAndPassword,
-      signInWithEmailAndPasswordField,
-      signInWithPhone,
       signInWithGoogle,
-      signInWithFacebook,
       signInWithTwitter,
       signInWithGitHub,
+      signInWithAnonymously,
     }
   },
 })
