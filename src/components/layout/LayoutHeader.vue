@@ -18,7 +18,7 @@
       </v-btn>
       <v-btn icon @click="toggleRightDrawer">
         <v-icon>
-          mdi-account
+          mdi-account-circle
         </v-icon>
       </v-btn>
     </template>
