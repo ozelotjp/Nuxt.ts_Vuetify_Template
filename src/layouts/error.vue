@@ -2,9 +2,10 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-alert type="error">
-          [{{ error.statusCode }}] {{ error.message }}
-        </v-alert>
+        <v-alert
+          type="error"
+          v-text="`[${error.statusCode}] ${error.message}`"
+        />
       </v-col>
     </v-row>
   </v-container>

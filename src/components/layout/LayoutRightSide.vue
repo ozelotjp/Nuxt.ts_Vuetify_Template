@@ -7,12 +7,8 @@
             <v-icon>mdi-account-circle</v-icon>
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title class="black--text">
-              {{ account.displayName }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ account.email }}
-            </v-list-item-subtitle>
+            <v-list-item-title class="black--text" v-text="account.name" />
+            <v-list-item-subtitle v-text="account.description" />
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -20,13 +16,9 @@
       <v-list-item-group color="primary">
         <v-list-item to="/auth/logout">
           <v-list-item-icon>
-            <v-icon>
-              mdi-logout-variant
-            </v-icon>
+            <v-icon>mdi-logout-variant</v-icon>
           </v-list-item-icon>
-          <v-list-item-content>
-            ログアウト
-          </v-list-item-content>
+          <v-list-item-content>ログアウト</v-list-item-content>
         </v-list-item>
       </v-list-item-group>
     </v-list>
