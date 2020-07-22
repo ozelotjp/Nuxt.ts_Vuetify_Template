@@ -8,7 +8,6 @@
 import { defineComponent, computed } from 'nuxt-composition-api'
 
 export default defineComponent({
-  middleware: 'authenticated',
   setup(_, { root: { $vuetify } }) {
     const screen = computed(() => $vuetify.breakpoint.name)
 
