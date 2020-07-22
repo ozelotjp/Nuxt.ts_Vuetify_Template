@@ -5,12 +5,12 @@
       NuxtTS-Template
     </v-toolbar-title>
     <v-spacer />
+    <v-btn icon>
+      <v-icon>
+        mdi-help-circle
+      </v-icon>
+    </v-btn>
     <template v-if="isAuthenticated">
-      <v-btn icon>
-        <v-icon>
-          mdi-help-circle
-        </v-icon>
-      </v-btn>
       <v-btn icon>
         <v-icon>
           mdi-bell
