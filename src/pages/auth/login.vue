@@ -5,50 +5,51 @@
         <v-card>
           <v-toolbar dense dark>
             <v-spacer />
-            <v-toolbar-title>
-              ログイン
-            </v-toolbar-title>
+            <v-toolbar-title>ログイン</v-toolbar-title>
             <v-spacer />
           </v-toolbar>
           <v-card-text>
             <v-row>
               <v-col cols="12">
-                <v-btn block class="text-capitalize" @click="signInWithGoogle">
-                  <v-icon left>
-                    mdi-google
-                  </v-icon>
-                  Googleでログイン
-                </v-btn>
-              </v-col>
-              <v-col cols="12">
-                <v-btn block class="text-capitalize" @click="signInWithTwitter">
-                  <v-icon left>
-                    mdi-twitter
-                  </v-icon>
-                  Twitterでログイン
-                </v-btn>
-              </v-col>
-              <v-col cols="12">
-                <v-btn block class="text-capitalize" @click="signInWithGitHub">
-                  <v-icon left>
-                    mdi-github
-                  </v-icon>
-                  GitHubでログイン
-                </v-btn>
-              </v-col>
-              <v-col cols="12">
-                <v-divider />
+                <p>
+                  ログインを行うと「<nuxt-link to="/docs/tos"
+                    >利用規約</nuxt-link
+                  >」と「<nuxt-link to="/docs/privacy"
+                    >プライバシーポリシー</nuxt-link
+                  >」に同意したものとみなします。
+                </p>
               </v-col>
               <v-col cols="12">
                 <v-btn
                   block
                   class="text-capitalize"
-                  @click="signInWithAnonymously"
+                  color="primary"
+                  @click="signInWithGoogle"
                 >
-                  <v-icon left>
-                    mdi-incognito
-                  </v-icon>
-                  お試し利用（ゲスト）
+                  <v-icon left>mdi-google</v-icon>
+                  Googleでログイン
+                </v-btn>
+              </v-col>
+              <v-col cols="12">
+                <v-btn
+                  block
+                  class="text-capitalize"
+                  color="primary"
+                  @click="signInWithTwitter"
+                >
+                  <v-icon left>mdi-twitter</v-icon>
+                  Twitterでログイン
+                </v-btn>
+              </v-col>
+              <v-col cols="12">
+                <v-btn
+                  block
+                  class="text-capitalize"
+                  color="primary"
+                  @click="signInWithGitHub"
+                >
+                  <v-icon left>mdi-github</v-icon>
+                  GitHubでログイン
                 </v-btn>
               </v-col>
             </v-row>
