@@ -56,8 +56,13 @@ export default defineComponent({
     onBeforeMount(() => {
       $firebase.auth().onAuthStateChanged((user) => {
         if (user !== null) {
-          account.displayName = user.displayName || ''
-          account.email = user.email || ''
+          if (user.isAnonymous) {
+            account.name = 'ななしさん'
+            account.description = 'ログイン済み（お試し）'
+          } else {
+            account.name = user.displayName || 'undefined'
+            account.description = 'ログイン済み'
+          }
         }
       })
     })
