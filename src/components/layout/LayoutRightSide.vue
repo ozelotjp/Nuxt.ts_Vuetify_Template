@@ -4,7 +4,7 @@
       <v-list-item-group>
         <v-list-item two-line disabled>
           <v-list-item-avatar>
-            <v-img :src="account.photoUrl" />
+            <v-icon>mdi-account-circle</v-icon>
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title class="black--text">
@@ -45,9 +45,8 @@ export default defineComponent({
   setup(_, { root: { $firebase } }) {
     const drawer = ref(false)
     const account = reactive({
-      displayName: '',
-      email: '',
-      photoUrl: '',
+      name: '',
+      description: '',
     })
 
     const toggleDrawer = () => {
@@ -59,7 +58,6 @@ export default defineComponent({
         if (user !== null) {
           account.displayName = user.displayName || ''
           account.email = user.email || ''
-          account.photoUrl = user.photoURL || ''
         }
       })
     })
