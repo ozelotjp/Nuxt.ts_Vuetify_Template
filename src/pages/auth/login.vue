@@ -52,11 +52,65 @@
                   GitHubでログイン
                 </v-btn>
               </v-col>
+              <v-col cols="12">
+                <v-btn
+                  block
+                  class="text-capitalize"
+                  @click="openAnonymouslyWarningDialog"
+                >
+                  <v-icon left>mdi-incognito</v-icon>
+                  お試しログイン
+                </v-btn>
+              </v-col>
             </v-row>
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
+
+    <v-dialog v-model="state.anonymouslyWarningDialog" width="500">
+      <v-card>
+        <v-card-title>
+          お試しログイン
+        </v-card-title>
+        <v-card-text>
+          <ul>
+            <li>
+              これはなに？
+              <ul>
+                <li><u>ちょっとお試しで使ってみたい</u>人向けの機能です。</li>
+                <li>
+                  あなた専用の<u>一時的なアカウント</u>を発行します。
+                </li>
+              </ul>
+            </li>
+            <li>
+              "一時的なアカウント"の注意点
+              <ul>
+                <li>
+                  ログアウトをすると元の"一時的なアカウント"にはログインできません。
+                </li>
+                <li>
+                  他の端末から"一時的なアカウント"にはログインできません。
+                </li>
+                <li>
+                  "一時的なアカウント"は突然に削除されることがあります。
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn @click="closeAnonymouslyWarningDialog">キャンセル</v-btn>
+          <v-spacer />
+          <v-btn
+            color="primary"
+            @click="closeAnonymouslyWarningDialog, signInWithAnonymously"
+            >お試しログインを行う</v-btn
+          >
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
     <v-overlay v-model="state.loading">
       <v-progress-circular indeterminate size="64" />
@@ -110,6 +164,7 @@ export default defineComponent({
   setup(_, { root: { $firebase, $router } }) {
     const state = reactive({
       loading: true,
+      anonymouslyWarningDialog: false,
       errorNotify: {
         show: false,
         text: '',
@@ -150,12 +205,22 @@ export default defineComponent({
       $firebase.auth().signInAnonymously()
     }
 
+    const openAnonymouslyWarningDialog = () => {
+      state.anonymouslyWarningDialog = true
+    }
+
+    const closeAnonymouslyWarningDialog = () => {
+      state.anonymouslyWarningDialog = false
+    }
+
     return {
       state,
       signInWithGoogle,
       signInWithTwitter,
       signInWithGitHub,
       signInWithAnonymously,
+      openAnonymouslyWarningDialog,
+      closeAnonymouslyWarningDialog,
     }
   },
 })
