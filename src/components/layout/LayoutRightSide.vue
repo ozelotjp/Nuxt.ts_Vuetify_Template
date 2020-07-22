@@ -16,6 +16,7 @@
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
+      <v-divider />
       <v-list-item-group color="primary">
         <v-list-item to="/auth/logout">
           <v-list-item-icon>
