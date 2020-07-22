@@ -105,7 +105,8 @@
           <v-spacer />
           <v-btn
             color="primary"
-            @click="closeAnonymouslyWarningDialog, signInWithAnonymously"
+            :loading="state.anonymouslyLoading"
+            @click="signInWithAnonymously"
             >お試しログインを行う</v-btn
           >
         </v-card-actions>
@@ -165,6 +166,7 @@ export default defineComponent({
     const state = reactive({
       loading: true,
       anonymouslyWarningDialog: false,
+      anonymouslyLoading: false,
       errorNotify: {
         show: false,
         text: '',
@@ -202,6 +204,7 @@ export default defineComponent({
 
     const signInWithAnonymously = () => {
       state.loading = true
+      state.anonymouslyLoading = true
       $firebase.auth().signInAnonymously()
     }
 
