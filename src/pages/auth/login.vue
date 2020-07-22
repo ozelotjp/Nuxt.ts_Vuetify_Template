@@ -3,7 +3,7 @@
     <v-row align="center" justify="center">
       <v-col cols="11" sm="7" md="5" lg="5" xl="3">
         <v-card>
-          <v-toolbar dense dark color="primary">
+          <v-toolbar dense dark>
             <v-spacer />
             <v-toolbar-title>
               ログイン
