@@ -21,10 +21,5 @@ export default defineComponent({
       required: true,
     },
   },
-  setup({ error }) {
-    return {
-      error,
-    }
-  },
 })
 </script>
