@@ -71,14 +71,6 @@ const config: NuxtConfig = {
     ],
   ],
   /*
-   ** vuetify module configuration
-   ** https://github.com/nuxt-community/vuetify-module
-   */
-  vuetify: {
-    customVariables: ['@/assets/variables.scss'],
-    treeShake: true,
-  },
-  /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
@@ -94,6 +86,14 @@ const config: NuxtConfig = {
     webpack: {
       poll: 1000,
     },
+  },
+  /*
+   ** vuetify module configuration
+   ** https://github.com/nuxt-community/vuetify-module
+   */
+  vuetify: {
+    customVariables: ['@/assets/variables.scss'],
+    treeShake: true,
   },
 }
 
