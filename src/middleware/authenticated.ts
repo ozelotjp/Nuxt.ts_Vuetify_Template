@@ -17,7 +17,7 @@ const myMiddleware: Middleware = async ({
       //
     })
     .catch(() => {
-      authenticatedStore.setNextUrl(route.path)
+      authenticatedStore.setNextUrl(route.fullPath)
       redirect('/auth/login')
     })
 }
