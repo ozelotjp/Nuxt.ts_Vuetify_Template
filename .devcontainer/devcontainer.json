@@ -42,5 +42,6 @@
   // Docker-Compose
   "dockerComposeFile": "../docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/app"
+  "workspaceFolder": "/app",
+  "postCreateCommand": "apk add --no-cache git"
 }
