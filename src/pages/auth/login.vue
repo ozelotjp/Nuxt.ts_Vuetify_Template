@@ -70,18 +70,14 @@
 
     <v-dialog v-model="state.anonymouslyWarningDialog" width="500">
       <v-card>
-        <v-card-title>
-          お試しログイン
-        </v-card-title>
+        <v-card-title> お試しログイン </v-card-title>
         <v-card-text>
           <ul>
             <li>
               これはなに？
               <ul>
                 <li><u>ちょっとお試しで使ってみたい</u>人向けの機能です。</li>
-                <li>
-                  あなた専用の<u>一時的なアカウント</u>を発行します。
-                </li>
+                <li>あなた専用の<u>一時的なアカウント</u>を発行します。</li>
               </ul>
             </li>
             <li>
@@ -93,9 +89,7 @@
                 <li>
                   他の端末から"一時的なアカウント"にはログインできません。
                 </li>
-                <li>
-                  "一時的なアカウント"は突然に削除されることがあります。
-                </li>
+                <li>"一時的なアカウント"は突然に削除されることがあります。</li>
               </ul>
             </li>
           </ul>
@@ -127,9 +121,7 @@
     >
       {{ state.errorNotify.text }}
       <v-btn icon @click="state.errorNotify.show = false">
-        <v-icon>
-          mdi-close
-        </v-icon>
+        <v-icon> mdi-close </v-icon>
       </v-btn>
     </v-snackbar>
   </v-container>
@@ -158,7 +150,7 @@
 </style>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'nuxt-composition-api'
+import { defineComponent, reactive } from '@nuxtjs/composition-api'
 import { authenticatedStore } from '@/store'
 
 export default defineComponent({

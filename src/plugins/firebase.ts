@@ -1,4 +1,4 @@
-import { Plugin } from '@nuxt/types'
+import { defineNuxtPlugin } from '@nuxtjs/composition-api'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
@@ -14,8 +14,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-const myPlugin: Plugin = (_, inject) => {
+const myPlugin = defineNuxtPlugin((_, inject) => {
   inject('firebase', firebase)
-}
+})
 
 export default myPlugin

@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'nuxt-composition-api'
+import { defineComponent, computed, ref } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup(_, { root: { $vuetify } }) {

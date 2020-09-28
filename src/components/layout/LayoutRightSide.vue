@@ -31,7 +31,7 @@ import {
   ref,
   reactive,
   onBeforeMount,
-} from 'nuxt-composition-api'
+} from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup(_, { root: { $firebase } }) {

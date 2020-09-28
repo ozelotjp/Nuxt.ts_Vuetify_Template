@@ -3,63 +3,47 @@ import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
   srcDir: 'src',
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'spa',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
+
+  // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
+  ssr: false,
+
+  // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-  /*
-   ** Headers of the page
-   ** See https://nuxtjs.org/api/configuration-head
-   */
+
+  // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - NuxtTS-Template',
+    title: 'NuxtTS-Template',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || '',
-      },
-    ],
-    link: [
-      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { hid: 'description', name: 'description', content: '' },
     ],
   },
-  /*
-   ** Global CSS
-   */
+
+  // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
-  /*
-   ** Plugins to load before mounting the App
-   ** https://nuxtjs.org/guide/plugins
-   */
+
+  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: ['@/plugins/firebase'],
-  /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
+
+  // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
-  /*
-   ** Nuxt.js dev-modules
-   */
+
+  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    '@nuxtjs/composition-api',
+    // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    'nuxt-composition-api',
+    // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
-  /*
-   ** Nuxt.js modules
-   */
+
+  // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // Doc: https://github.com/nuxt-community/dotenv-module
     [
@@ -70,11 +54,11 @@ const config: NuxtConfig = {
       },
     ],
   ],
-  /*
-   ** Build configuration
-   ** See https://nuxtjs.org/api/configuration-build/
-   */
+
+  // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
+
+  // TypeScript Configuration (https://typescript.nuxtjs.org/guide/lint.html#configuration)
   typescript: {
     typeCheck: {
       eslint: {
@@ -82,15 +66,15 @@ const config: NuxtConfig = {
       },
     },
   },
+
+  // Wathers Configuration (https://nuxtjs.org/api/configuration-watchers/)
   watchers: {
     webpack: {
       poll: 1000,
     },
   },
-  /*
-   ** vuetify module configuration
-   ** https://github.com/nuxt-community/vuetify-module
-   */
+
+  // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
     customVariables: ['@/assets/variables.scss'],
     treeShake: true,
