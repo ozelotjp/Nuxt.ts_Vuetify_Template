@@ -151,10 +151,9 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from '@nuxtjs/composition-api'
-import { authenticatedStore } from '@/store'
 
 export default defineComponent({
-  setup(_, { root: { $firebase, $router } }) {
+  setup(_, { root: { $firebase, $route, $router } }) {
     const state = reactive({
       loading: true,
       anonymouslyWarningDialog: false,
@@ -167,7 +166,7 @@ export default defineComponent({
 
     $firebase.auth().onAuthStateChanged((user) => {
       if (user !== null) {
-        $router.push(authenticatedStore.nextUrl)
+        $router.push(decodeURI(($route.query.before as string | null) || '/'))
         return
       }
       state.loading = false

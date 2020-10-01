@@ -1,4 +1,3 @@
-import { authenticatedStore } from '@/store'
 import { defineNuxtMiddleware } from '@nuxtjs/composition-api'
 
 const myMiddleware = defineNuxtMiddleware(
@@ -14,8 +13,7 @@ const myMiddleware = defineNuxtMiddleware(
         //
       })
       .catch(() => {
-        authenticatedStore.setNextUrl(route.fullPath)
-        redirect('/auth/login')
+        redirect(`/auth/login?before=${encodeURI(route.fullPath)}`)
       })
   }
 )
