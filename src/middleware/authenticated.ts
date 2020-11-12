@@ -1,4 +1,5 @@
 import { defineNuxtMiddleware } from '@nuxtjs/composition-api'
+import firebase from 'firebase'
 
 const myMiddleware = defineNuxtMiddleware(
   async ({ app: { $firebase }, redirect, route }) => {
