@@ -1,5 +1,4 @@
 import firebase from 'firebase/app'
-import { Context, NuxtAppOptions } from '@nuxt/types'
 
 declare module 'vue/types/vue' {
   interface Vue {
