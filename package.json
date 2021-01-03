@@ -27,7 +27,7 @@
     "@nuxtjs/composition-api": "0.17.0",
     "@nuxtjs/dotenv": "1.4.1",
     "@nuxtjs/vuetify": "1.11.2",
-    "core-js": "3.8.1",
+    "core-js": "3.8.2",
     "firebase": "8.2.1",
     "nuxt": "2.14.12"
   },
